@@ -182,4 +182,9 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
+    
+    private void look()
+    {
+        System.out.println(currentRoom.getLongDescription());
+    }
 }
