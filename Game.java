@@ -35,13 +35,13 @@ public class Game
     private void createRooms()
     {
         Room outside, theater, pub, lab, office;
-      
+        Item[] items = {new Item("one","desc"), new Item("two","desc")};
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        outside = new Room("outside the main entrance of the university",items);
+        theater = new Room("in a lecture theater",items);
+        pub = new Room("in the campus pub",items);
+        lab = new Room("in a computing lab",items);
+        office = new Room("in the computing admin office",items);
         
         // initialise room exits
         outside.setExit("east", theater);
@@ -118,6 +118,11 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+                
+            case LOOK:
+                look();
+                break;
+                
         }
         return wantToQuit;
     }
@@ -178,5 +183,11 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+    
+    private void look()
+    {
+        System.out.println(currentRoom.getLongDescription());
+        currentRoom.printItemsInRoom();
     }
 }
